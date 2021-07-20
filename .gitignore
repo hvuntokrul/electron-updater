@@ -11,9 +11,6 @@ node_modules
 
 .DS_Store
 
-out/
-/test/test-report.xml
-
 /packages/dmg-builder/vendor/
 /packages/electron-builder/README.md
 #/packages/app-builder-lib/scheme.json
