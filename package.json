@@ -1,33 +1,72 @@
 {
-  "name": "electron-updater",
-  "private": false,
-  "version": "4.4.1",
+  "_args": [
+    [
+      "electron-updater@4.3.8",
+      "D:\\PROG\\KOOFR\\app-dev"
+    ]
+  ],
+  "_from": "electron-updater@4.3.8",
+  "_id": "electron-updater@4.3.8",
+  "_inBundle": false,
+  "_integrity": "sha512-/tB82Ogb2LqaXrUzAD8waJC+TZV52Pr0Znfj7w+i4D+jA2GgrKFI3Pxjp+36y9FcBMQz7kYsMHcB6c5zBJao+A==",
+  "_location": "/electron-updater",
+  "_phantomChildren": {
+    "at-least-node": "1.0.0",
+    "graceful-fs": "4.2.6",
+    "jsonfile": "6.1.0",
+    "universalify": "2.0.0"
+  },
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "electron-updater@4.3.8",
+    "name": "electron-updater",
+    "escapedName": "electron-updater",
+    "rawSpec": "4.3.8",
+    "saveSpec": null,
+    "fetchSpec": "4.3.8"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/electron-updater/-/electron-updater-4.3.8.tgz",
+  "_spec": "4.3.8",
+  "_where": "D:\\PROG\\KOOFR\\app-dev",
+  "author": {
+    "name": "Vladimir Krivosheev"
+  },
+  "bugs": {
+    "url": "https://github.com/electron-userland/electron-builder/issues"
+  },
+  "dependencies": {
+    "@types/semver": "^7.3.4",
+    "builder-util-runtime": "8.7.3",
+    "fs-extra": "^9.1.0",
+    "js-yaml": "^4.0.0",
+    "lazy-val": "^1.0.4",
+    "lodash.isequal": "^4.5.0",
+    "semver": "^7.3.4"
+  },
   "description": "Cross platform updater for electron applications",
-  "main": "out/main.js",
-  "author": "Vladimir Krivosheev",
-  "license": "MIT",
-  "repository": "https://github.com/hvuntokrul/electron-updater",
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.7",
+    "@types/js-yaml": "^3.12.6",
+    "@types/lodash.isequal": "^4.5.5"
+  },
   "files": [
     "out"
   ],
-  "dependencies": {
-    "@types/semver": "^7.3.6",
-    "builder-util-runtime": "workspace:*",
-    "fs-extra": "^10.0.0",
-    "js-yaml": "^4.1.0",
-    "lazy-val": "^1.0.5",
-    "lodash.escaperegexp": "^4.1.2",
-    "lodash.isequal": "^4.5.0",
-    "semver": "^7.3.5"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "9.0.12",
-    "@types/js-yaml": "4.0.2",
-    "@types/lodash.escaperegexp": "4.1.6",
-    "@types/lodash.isequal": "4.5.5"
-  },
-  "typings": "./out/main.d.ts",
+  "homepage": "https://github.com/electron-userland/electron-builder",
+  "license": "MIT",
+  "main": "out/main.js",
+  "name": "electron-updater",
   "publishConfig": {
     "tag": "next"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electron-userland/electron-builder.git"
+  },
+  "typings": "./out/main.d.ts",
+  "version": "4.3.8"
 }
