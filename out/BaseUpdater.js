@@ -74,7 +74,7 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
         installerPath,
         isSilent,
         isForceRunAfter,
-        isAdminRightsRequired: installerPath.startsWith(path.resolve('C:/Program Files/')) || downloadedFileInfo.isAdminRightsRequired
+        isAdminRightsRequired: installerPath.indexOf('Program Files') !== -1 || downloadedFileInfo.isAdminRightsRequired
       });
     } catch (e) {
       this.dispatchError(e);
