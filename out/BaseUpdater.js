@@ -1,5 +1,7 @@
 "use strict";
 
+var path = _interopRequireWildcard(require("path"));
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -72,7 +74,7 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
         installerPath,
         isSilent,
         isForceRunAfter,
-        isAdminRightsRequired: true // process.resourcesPath.startsWith('C:/Program Files/') || downloadedFileInfo.isAdminRightsRequired
+        isAdminRightsRequired: installerPath.startsWith(path.resolve('C:/Program Files/')) || downloadedFileInfo.isAdminRightsRequired
       });
     } catch (e) {
       this.dispatchError(e);
