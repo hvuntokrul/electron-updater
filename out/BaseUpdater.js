@@ -74,7 +74,15 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
         installerPath,
         isSilent,
         isForceRunAfter,
-        isAdminRightsRequired: installerPath.indexOf('Program Files') !== -1 || downloadedFileInfo.isAdminRightsRequired
+        isAdminRightsRequired: this.outDir.indexOf('Program Files') !== -1 || downloadedFileInfo.isAdminRightsRequired
+      
+//        // Failed
+//        isAdminRightsRequired: process.resourcesPath.startsWith('C:/Program Files/') || downloadedFileInfo.isAdminRightsRequired
+//        isAdminRightsRequired: installerPath.startsWith(path.resolve('C:/Program Files/')) || downloadedFileInfo.isAdminRightsRequired
+//        isAdminRightsRequired: installerPath.indexOf('Program Files') !== -1 || downloadedFileInfo.isAdminRightsRequired
+      
+//       // Original
+//       isAdminRightsRequired: downloadedFileInfo.isAdminRightsRequired
       });
     } catch (e) {
       this.dispatchError(e);
