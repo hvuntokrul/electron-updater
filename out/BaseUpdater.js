@@ -72,7 +72,7 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
         installerPath,
         isSilent,
         isForceRunAfter,
-        isAdminRightsRequired: process.resourcesPath.startsWith('C:/Program Files/') || downloadedFileInfo.isAdminRightsRequired
+        isAdminRightsRequired: true // process.resourcesPath.startsWith('C:/Program Files/') || downloadedFileInfo.isAdminRightsRequired
       });
     } catch (e) {
       this.dispatchError(e);
