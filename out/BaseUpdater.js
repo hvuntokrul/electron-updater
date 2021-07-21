@@ -71,8 +71,10 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
       this._logger.info(`Install: isSilent: ${isSilent}, isForceRunAfter: ${isForceRunAfter}`);
       
       var adminPath = true;
-      try { if (fs.accessSync(process.execPath, fs.constants.F_OK)) { adminPath = false; } }
-      catch(err) {} 
+      try {
+        fs.accessSync(process.execPath, fs.constants.F_OK);
+        adminPath = false;
+      } catch(err) {} 
       
       return this.doInstall({
         installerPath,
