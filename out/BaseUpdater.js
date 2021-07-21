@@ -70,40 +70,20 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
 
     try {
       this._logger.info(`Install: isSilent: ${isSilent}, isForceRunAfter: ${isForceRunAfter}`);
-      
-//       var adminPath = true;
-//       try {
-//         fs.accessSync(process.execPath, fs.constants.F_OK);
-//         adminPath = false;
-//       } catch(err) {}
-      
-      let admin = true;
+            
+      let installPathRequiresElevation = process.platform === 'win32' ? true : false;
       try {
-        var testPath = path.join(path.dirname(process.execPath), 'test');
-        fs.writeFileSync(testPath, ' ');
-        fs.rmSync(testPath);
+        var accessPath = path.join(path.dirname(process.execPath), 'access');
+        fs.writeFileSync(accessPath, ' ');
         // If no error, already admin, no need to ask
-        admin = false;
+        installPathRequiresElevation = false;
       } catch(err) {}
       
       return this.doInstall({
         installerPath,
         isSilent,
         isForceRunAfter,
-        // Working
-        isAdminRightsRequired: admin || downloadedFileInfo.isAdminRightsRequired
-//         isAdminRightsRequired: process.execPath.indexOf('Program Files') !== -1 || downloadedFileInfo.isAdminRightsRequired
-//         isAdminRightsRequired: process.execPath.indexOf(':\\Program Files\\') !== -1 || downloadedFileInfo.isAdminRightsRequired
-            
-//        // Failed
-//        isAdminRightsRequired: (this && this.outDir && this.outDir.indexOf('Program Files') !== -1) || downloadedFileInfo.isAdminRightsRequired
-//        isAdminRightsRequired: this.outDir.indexOf('Program Files') !== -1 || process.execPath.indexOf('Program Files') !== -1 || downloadedFileInfo.isAdminRightsRequired
-//        isAdminRightsRequired: process.resourcesPath.startsWith('C:/Program Files/') || downloadedFileInfo.isAdminRightsRequired
-//        isAdminRightsRequired: installerPath.startsWith(path.resolve('C:/Program Files/')) || downloadedFileInfo.isAdminRightsRequired
-//        isAdminRightsRequired: installerPath.indexOf('Program Files') !== -1 || downloadedFileInfo.isAdminRightsRequired
-      
-//       // Original
-//           isAdminRightsRequired: downloadedFileInfo.isAdminRightsRequired
+        isAdminRightsRequired: installPathRequiresElevation || downloadedFileInfo.isAdminRightsRequired
       });
     } catch (e) {
       this.dispatchError(e);
