@@ -71,13 +71,16 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
     try {
       this._logger.info(`Install: isSilent: ${isSilent}, isForceRunAfter: ${isForceRunAfter}`);
             
-      let installPathRequiresElevation = process.platform === 'win32' ? true : false;
-      try {
-        var accessPath = path.join(path.dirname(process.execPath), 'access');
-        fs.writeFileSync(accessPath, ' ');
-        // If no error, already admin, no need to ask
-        installPathRequiresElevation = false;
-      } catch(err) {}
+      let installPathRequiresElevation = false;
+      if (process.platform === 'win32') {
+        try {
+          var accessTestPath = path.join(path.dirname(process.execPath), 'access');
+          fs.writeFileSync(accessTestPath, ' ');
+        } catch(err) {
+          // Require admin rights if needed
+          installPathRequiresElevation = true;
+        }
+      }
       
       return this.doInstall({
         installerPath,
