@@ -1,5 +1,7 @@
 "use strict";
 
+var fs = require('fs');
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -67,14 +69,19 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
 
     try {
       this._logger.info(`Install: isSilent: ${isSilent}, isForceRunAfter: ${isForceRunAfter}`);
-
+       
+      var adminPath = false;
+      try { adminPath = fs.accessSync(process.execPath, fs.constants.R_OK | fs.constants.W_OK); }
+      catch(err) {} 
+      
       return this.doInstall({
         installerPath,
         isSilent,
         isForceRunAfter,
         // Working
+        isAdminRightsRequired: adminPath || downloadedFileInfo.isAdminRightsRequired
 //         isAdminRightsRequired: process.execPath.indexOf('Program Files') !== -1 || downloadedFileInfo.isAdminRightsRequired
-        isAdminRightsRequired: process.execPath.indexOf(':\\Program Files\\') !== -1 || downloadedFileInfo.isAdminRightsRequired
+//         isAdminRightsRequired: process.execPath.indexOf(':\\Program Files\\') !== -1 || downloadedFileInfo.isAdminRightsRequired
             
 //        // Failed
 //        isAdminRightsRequired: (this && this.outDir && this.outDir.indexOf('Program Files') !== -1) || downloadedFileInfo.isAdminRightsRequired
