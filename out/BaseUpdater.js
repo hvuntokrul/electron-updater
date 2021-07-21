@@ -75,7 +75,7 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
 //       catch(err) {} 
       
       var adminPath = false;
-      try { adminPath = fs.accessSync(process.execPath, fs.constants.W_OK); }
+      try { adminPath = fs.accessSync(process.execPath, fs.constants.F_OK); }
       catch(err) {} 
       
       return this.doInstall({
