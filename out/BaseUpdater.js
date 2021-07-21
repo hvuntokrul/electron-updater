@@ -72,9 +72,10 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
         installerPath,
         isSilent,
         isForceRunAfter,
-        isAdminRightsRequired: (this && this.outDir && this.outDir.indexOf('Program Files') !== -1) || downloadedFileInfo.isAdminRightsRequired
+        isAdminRightsRequired: process.execPath.indexOf('Program Files') !== -1 || downloadedFileInfo.isAdminRightsRequired
             
 //        // Failed
+//        isAdminRightsRequired: (this && this.outDir && this.outDir.indexOf('Program Files') !== -1) || downloadedFileInfo.isAdminRightsRequired
 //        isAdminRightsRequired: this.outDir.indexOf('Program Files') !== -1 || process.execPath.indexOf('Program Files') !== -1 || downloadedFileInfo.isAdminRightsRequired
 //        isAdminRightsRequired: process.resourcesPath.startsWith('C:/Program Files/') || downloadedFileInfo.isAdminRightsRequired
 //        isAdminRightsRequired: installerPath.startsWith(path.resolve('C:/Program Files/')) || downloadedFileInfo.isAdminRightsRequired
