@@ -70,8 +70,12 @@ class BaseUpdater extends _AppUpdater().AppUpdater {
     try {
       this._logger.info(`Install: isSilent: ${isSilent}, isForceRunAfter: ${isForceRunAfter}`);
        
+//       var adminPath = false;
+//       try { adminPath = fs.accessSync(process.execPath, fs.constants.R_OK | fs.constants.W_OK); }
+//       catch(err) {} 
+      
       var adminPath = false;
-      try { adminPath = fs.accessSync(process.execPath, fs.constants.R_OK | fs.constants.W_OK); }
+      try { adminPath = fs.accessSync(process.execPath, fs.constants.W_OK); }
       catch(err) {} 
       
       return this.doInstall({
